@@ -1,0 +1,39 @@
+% Define the input signal
+clc;
+close all;
+clear all;
+ x = [1, 2, 3, 4];
+ n=[-1,0,1,2];
+ 
+ % Define the frequency range for evaluation 
+w = linspace(-pi, pi, 1000); 
+% Initialize the DTFT output
+ Xw = zeros(size(w));
+ % Compute the DTFT 
+for i = 1:length(w)
+    Xw(i) = sum(x .* exp(-1j * w(i) * n)); 
+end 
+% Plot the magnitude and phase spectra of the DTFT 
+subplot(4, 1, 1); 
+plot(w, abs(Xw)); 
+title('Magnitude Spectrum');
+ xlabel('Frequency (radians/sample)');
+ ylabel('Magnitude'); 
+subplot(4, 1, 2); 
+plot(w, angle(Xw));
+ title('Phase Spectrum');
+ xlabel('Frequency (radians/sample)'); 
+ylabel('Phase (radians)');
+
+subplot(4, 1, 3); 
+plot(w, real(Xw));
+ title('Real Part');
+ xlabel('Frequency (radians/sample)'); 
+ylabel('Phase (radians)');
+
+subplot(4, 1, 4); 
+plot(w, imag(Xw));
+ title('Imaginary part');
+ xlabel('Frequency (radians/sample)'); 
+ylabel('Phase (radians)');
+
